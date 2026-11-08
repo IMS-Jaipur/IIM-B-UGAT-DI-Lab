@@ -231,6 +231,41 @@ footer .inner{background:var(--surface);border:1px solid var(--line);padding:10p
   .calc{left:50%;right:auto;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px))}
   .calc[style*="left"]{transform:none}
 }
+/* phones turned sideways: data and question side by side, header scrolls away, data stays pinned */
+@media (orientation:landscape) and (max-height:520px){
+  .bar{position:static}
+  .bar .inner{min-height:40px;padding-block:3px}
+  .brand b{font-size:15px}.brand small{display:none}
+  .hbtn{padding:3px 10px;font-size:13px}
+  .cand .inner{padding-block:3px;gap:8px}
+  .avatar{display:none}
+  .cinfo{font-size:11px;display:flex;gap:6px;align-items:baseline}.cinfo b{display:inline;font-size:13.5px}
+  .tl{display:flex;gap:6px;align-items:baseline}.tl span{font-size:11px}.tl b{display:inline;font-size:17px}
+  .tabs{padding-top:5px}.tab{padding:3px 10px;font-size:12.5px}
+  .test{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+  .test.solo{grid-template-columns:minmax(0,1fr)}
+  .col{border-right:1px solid var(--line)}
+  .datapane{position:sticky;top:env(safe-area-inset-top,0px);max-height:calc(100dvh - 10px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));border-bottom:0}
+  .colhead{padding:5px 10px;font-size:13px}
+  .zb{height:24px}
+  .qbody{padding:10px 12px;gap:8px}
+  .qtext{font-size:15px}
+  .opt{padding:6px 8px}
+  .qfoot{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:8px}
+  .qfoot .sp{display:none}
+  .qfoot .eb{padding:7px 4px;font-size:12.5px}
+  .palcol{grid-column:1/-1;border-top:1px solid var(--line);border-right:0}
+  .palette{grid-template-columns:repeat(auto-fill,minmax(40px,1fr))}
+  .legend{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .homegrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .introbox{padding:14px 18px}.introbox h1{font-size:22px}
+  .calc{width:230px;left:auto;right:max(10px,env(safe-area-inset-right,0px));transform:none;bottom:calc(6px + env(safe-area-inset-bottom,0px))}
+  .calc .top{padding:3px 8px}
+  .cdisp{min-height:38px;font-size:17px;margin:5px;padding:3px 8px}
+  .cdisp small{min-height:12px;font-size:10.5px}
+  .ckeys{gap:4px;padding:0 5px 5px}
+  .ckeys button{padding:5px 0;font-size:14px}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
