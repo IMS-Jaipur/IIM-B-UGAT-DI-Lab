@@ -209,9 +209,27 @@ footer .inner{background:var(--surface);border:1px solid var(--line);padding:10p
 @media (max-width:760px){
   .test,.test.solo{grid-template-columns:minmax(0,1fr)}
   .col{border-right:0}
-  .datapane{position:static;max-height:46vh;border-bottom:1px solid var(--line)}
+  .datapane{position:static;max-height:38vh;border-bottom:1px solid var(--line)}
   .homegrid{grid-template-columns:minmax(0,1fr)}
-  .tl b{font-size:19px}
+  .cand .inner{padding-block:5px;gap:8px}
+  .avatar{display:none}
+  .cinfo{font-size:11px}.cinfo b{font-size:14px}
+  .tl span{font-size:11px}.tl b{font-size:18px}
+  .tabs{padding-top:8px}
+  .qbody{padding:12px;gap:10px}
+  .qtext{font-size:15.5px}
+  .opt{padding:9px 8px}
+  .qfoot{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .qfoot .sp{display:none}
+  .qfoot .eb{padding:9px 6px;font-size:13px}
+  .rtable,.rtable tbody,.rtable tr{display:block}
+  .rtable tr:first-child{display:none}
+  .rtable tr:last-child{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .rtable td{display:block;border:1px solid var(--line);text-align:left;padding:8px 10px}
+  .rtable td::before{content:attr(data-l);display:block;font:600 11.5px var(--f-b);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+  .rtable td.score{grid-column:1/-1}
+  .calc{left:50%;right:auto;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+  .calc[style*="left"]{transform:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -429,7 +447,7 @@ function resultHtml(){
   const r=score(), t=elapsed(), acc=r.c+r.w?Math.round(100*r.c/(r.c+r.w)):0;
   return `<section class="result"><h2>Score Card · ${esc(nameOf())}</h2>
     <div class="rwrap"><table class="rtable"><tr><th>Score</th><th>Correct</th><th>Wrong</th><th>Not answered</th><th>Accuracy</th><th>Time taken</th></tr>
-      <tr><td class="score">${String(r.s).replace('-','−')} / ${r.max}</td><td>${r.c}</td><td>${r.w}</td><td>${r.u}</td><td>${acc}%</td><td>${fmt(t)}<br><small style="font-weight:500;font-size:12px">limit ${fmt(T.limit)}</small></td></tr></table></div>
+      <tr><td class="score" data-l="Score">${String(r.s).replace('-','−')} / ${r.max}</td><td data-l="Correct">${r.c}</td><td data-l="Wrong">${r.w}</td><td data-l="Not answered">${r.u}</td><td data-l="Accuracy">${acc}%</td><td data-l="Time taken">${fmt(t)} <small style="font-weight:500;font-size:12px">/ ${fmt(T.limit)}</small></td></tr></table></div>
     <div class="resactions">
       <button class="eb green" id="share">Share score on WhatsApp</button>
       <button class="eb" id="retry">Retry ${T.mode==='block'?'this block':'this set'}</button>
